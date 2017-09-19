@@ -3,7 +3,12 @@ $cRowBorder: #e8e8e8
 $cRowSelected: #d9e4ec
 $cRowError: rgb(255,87,87)
 
-@import bourbon
+=clearfix
+  &:before, &:after
+    content: " "
+    display: table
+  &:after
+    clear: both
 
 body.active_admin
   .disclose

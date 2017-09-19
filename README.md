@@ -19,7 +19,13 @@ Note: If you experience issues with drag and drop capability, you may need to sp
 
 ```ruby
 # Gemfile
-gem 'activeadmin', github: 'activeadmin', ref: 'b3a9f4b'
+gem 'activeadmin', github: 'activeadmin'
+
+# app/assets/javascripts/active_admin.js
+//= require active_admin/sortable
+
+# app/assets/stylesheets/active_admin.scss
+@import "active_admin/sortable";
 ```
 
 ## Usage (Tree)
