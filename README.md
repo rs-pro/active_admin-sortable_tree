@@ -12,7 +12,7 @@ sortable via drag'n'drop.
 
 ```ruby
 # Gemfile
-gem "active_admin-sortable_tree"
+gem "active_admin-sortable_tree", github: "rs-pro/active_admin-sortable_tree"
 ```
 
 Note: If you experience issues with drag and drop capability, you may need to specify the version for your ActiveAdmin installation. It is reported working using v0.6.6, or if you are using v1.0.0.pre, it is reported working on this commit [b3a9f4b](https://github.com/activeadmin/activeadmin/commit/b3a9f4b3e4051447d011c59649a73f876989a199) or later.
