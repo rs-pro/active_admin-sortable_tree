@@ -1,9 +1,10 @@
+gem 'puma'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'ancestry'
 gem 'sqlite3'
 
-gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'activeadmin', '~> 1.1.0'
 gem 'devise'
 gem 'rails', '~> 5.1.0'
 gem 'sass-rails'

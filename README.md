@@ -1,7 +1,6 @@
 # ActiveAdmin::SortableTree
 
-[![Gem Version](https://badge.fury.io/rb/active_admin-sortable_tree.svg)](http://badge.fury.io/rb/active_admin-sortable_tree)
-[![Build Status](https://travis-ci.org/zorab47/active_admin-sortable_tree.svg?branch=master)](https://travis-ci.org/zorab47/active_admin-sortable_tree)
+[![Build Status](https://travis-ci.org/rs-pro/active_admin-sortable_tree.svg?branch=master)](https://travis-ci.org/rs-pro/active_admin-sortable_tree)
 
 This gem adds a tree and a list view to your ActiveAdmin resource index, both
 sortable via drag'n'drop.
@@ -12,10 +11,9 @@ sortable via drag'n'drop.
 
 ```ruby
 # Gemfile
+gem "activeadmin", '~> 1.1.0'
 gem "active_admin-sortable_tree", github: "rs-pro/active_admin-sortable_tree"
 ```
-
-Note: If you experience issues with drag and drop capability, you may need to specify the version for your ActiveAdmin installation. It is reported working using v0.6.6, or if you are using v1.0.0.pre, it is reported working on this commit [b3a9f4b](https://github.com/activeadmin/activeadmin/commit/b3a9f4b3e4051447d011c59649a73f876989a199) or later.
 
 ```ruby
 # Gemfile
