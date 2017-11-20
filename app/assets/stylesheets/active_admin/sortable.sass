@@ -3,12 +3,7 @@ $cRowBorder: #e8e8e8
 $cRowSelected: #d9e4ec
 $cRowError: rgb(255,87,87)
 
-=clearfix
-  &:before, &:after
-    content: " "
-    display: table
-  &:after
-    clear: both
+@import "active_admin/mixins/utilities"
 
 body.active_admin
   .disclose

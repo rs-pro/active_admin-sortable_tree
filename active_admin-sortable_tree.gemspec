@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails',           '~> 5.1'
   s.add_dependency 'activeadmin',     "~> 1.1.0"
   s.add_dependency 'jquery-ui-rails', '>= 6.0.1'
+  s.add_dependency 'jquery-rails'
+  s.add_dependency 'sass',        '~> 3.1'
 
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'rspec-rails'
