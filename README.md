@@ -1,5 +1,7 @@
 # ActiveAdmin::SortableTree
 
+This fork allows to work with awesome nested set & adds custom HTML in label
+
 [![Build Status](https://travis-ci.org/rs-pro/active_admin-sortable_tree.svg?branch=master)](https://travis-ci.org/rs-pro/active_admin-sortable_tree)
 
 This gem adds a tree and a list view to your ActiveAdmin resource index, both
@@ -57,6 +59,49 @@ ActiveAdmin.register Page do
         actions
   end
 end
+```
+
+### Custom HTML in label
+
+```ruby
+# app/admin/home_item.rb
+ActiveAdmin.register HomeItem do
+  member_action :toggle, method: :get do
+    resource.update_attribute :enabled, !resource.enabled
+
+    render js: "$('#home_item_#{resource.id} .status_tag').removeClass('yes').removeClass('no').addClass('#{resource.enabled ? :yes : :no}').text('#{resource.enabled ? "Вкл" : "Выкл"}')"
+  end
+
+  index as: :sortable do
+    label do |r|
+      span(r.id) +
+      span(r.name) + span(" ") +
+      a("data-href": toggle_admin_home_item_path(r), class: "status_tag #{r.enabled ? :yes : :no}") do
+        r.enabled ? "Вкл" : "Выкл"
+      end
+    end
+  end
+end
+```
+
+```js
+// app/assets/javascripts/active_admin.js
+
+$(document).on("click", ".status_tag", function(e) {
+  e.preventDefault()
+  e.stopPropagation();
+  var $t = $(this)
+  $.ajax({
+    url: $t.data("href"),
+    success: function (r) {
+      eval(r)
+    },
+    error: function(e) {
+      console.error(e)
+    }
+  })
+})
+
 ```
 
 **Model**: ActiveAdmin::SortableTree is agnostic to the tree implementation. All

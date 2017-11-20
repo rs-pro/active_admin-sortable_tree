@@ -8,7 +8,7 @@ window.ActiveAdminSortableEvent = (function() {
       if (!eventToListeners.hasOwnProperty(event)) {
         eventToListeners[event] = [];
       }
-      return eventToListeners[event].push(callback);
+      eventToListeners[event].push(callback);
     },
     trigger: function(event, args) {
       var callback, e, i, len, ref, results;
@@ -36,19 +36,34 @@ window.ActiveAdminSortableEvent = (function() {
 
 $(function() {
   $('.disclose').bind('click', function(event) {
-    return $(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass('mjs-nestedSortable-expanded');
+    $(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass('mjs-nestedSortable-expanded');
   });
-  return $(".index_as_sortable [data-sortable-type]").each(function() {
-    var $this, max_levels, tab_hack;
+  $(".index_as_sortable [data-sortable-type]").each(function() {
+    var $this, max_levels, tab_hack, getData;
     $this = $(this);
+
+
     if ($this.data('sortable-type') === "tree") {
       max_levels = $this.data('max-levels');
       tab_hack = 20;
+      getData = function(item) {
+        return {
+          id: item.data("id"),
+          parent_id: item.parent().parent().data("id"),
+          prev_id: item.prev().data("id"),
+          next_id: item.next().data("id")
+        }
+      }
     } else {
       max_levels = 1;
       tab_hack = 99999;
+
+      getData = function(item) {
+        return $this.nestedSortable("serialize")
+      }
     }
-    return $this.nestedSortable({
+
+    $this.nestedSortable({
       forcePlaceholderSize: true,
       forceHelperSizeType: true,
       errorClass: 'cantdoit',
@@ -66,26 +81,26 @@ $(function() {
       toleranceElement: '> div',
       isTree: true,
       startCollapsed: $this.data("start-collapsed"),
-      update: function() {
+      update: function(event, ui) {
         $this.nestedSortable("disable");
-        return $.ajax({
+        $.ajax({
           url: $this.data("sortable-url"),
           type: "post",
-          data: $this.nestedSortable("serialize")
+          data: getData(ui.item)
         }).always(function() {
           $this.find('.item').each(function(index) {
             if (index % 2) {
-              return $(this).removeClass('odd').addClass('even');
+              $(this).removeClass('odd').addClass('even');
             } else {
-              return $(this).removeClass('even').addClass('odd');
+              $(this).removeClass('even').addClass('odd');
             }
           });
           $this.nestedSortable("enable");
-          return ActiveAdminSortableEvent.trigger('ajaxAlways');
+          ActiveAdminSortableEvent.trigger('ajaxAlways');
         }).done(function() {
-          return ActiveAdminSortableEvent.trigger('ajaxDone');
+          ActiveAdminSortableEvent.trigger('ajaxDone');
         }).fail(function() {
-          return ActiveAdminSortableEvent.trigger('ajaxFail');
+          ActiveAdminSortableEvent.trigger('ajaxFail');
         });
       }
     });

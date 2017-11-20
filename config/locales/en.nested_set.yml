@@ -1,0 +1,9 @@
+en:
+  admin:
+    actions:
+      nested_set:
+        menu: "Sorting"
+        breadcrumb: "Sorting"
+        error: "Error"
+        success: "Success"
+        title: "Sorting"

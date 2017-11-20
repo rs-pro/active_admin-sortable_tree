@@ -115,7 +115,7 @@ module ActiveAdmin
       end
 
       def build_nested_item(item)
-        li :id => "#{@resource_name}_#{item.id}" do
+        li :id => "#{@resource_name}_#{item.id}", 'data-id' => item.id do
 
           div :class => "item " << cycle("odd", "even", :name => "list_class") do
             if active_admin_config.batch_actions.any?
@@ -131,7 +131,12 @@ module ActiveAdmin
             end
 
             h3 :class => "cell left" do
-              call_method_or_proc_on(item, @label)
+              case @label
+              when Proc
+                self.instance_exec(item, nil, &@label)
+              else
+                call_method_or_proc_on(item, @label)
+              end
             end
             div :class => "cell right" do
               build_actions(item)

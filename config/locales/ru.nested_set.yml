@@ -1,0 +1,9 @@
+ru:
+  admin:
+    actions:
+      nested_set:
+        menu: "Сортировка"
+        breadcrumb: "Сортировка"
+        error: "Ошибка"
+        success: "Успешно"
+        title: "Сортировка"
