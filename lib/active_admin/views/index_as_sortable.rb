@@ -144,7 +144,13 @@ module ActiveAdmin
           end
 
           ol do
-            item.send(options[:children_method]).order(options[:sorting_attribute]).each do |c|
+            q = item.send(options[:children_method])
+            if defined?(Mongoid)
+              q = q.order(options[:sorting_attribute] => :asc)
+            else
+              q = q.order(options[:sorting_attribute])
+            end
+            q.each do |c|
               build_nested_item(c)
             end
           end if tree?
