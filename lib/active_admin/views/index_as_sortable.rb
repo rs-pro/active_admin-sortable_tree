@@ -146,7 +146,7 @@ module ActiveAdmin
           ol do
             q = item.send(options[:children_method])
             if defined?(Mongoid)
-              q = q.order(options[:sorting_attribute] => :asc)
+              q = q.order_by(options[:sorting_attribute] => :asc)
             else
               q = q.order(options[:sorting_attribute])
             end
