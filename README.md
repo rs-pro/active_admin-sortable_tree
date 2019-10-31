@@ -39,7 +39,7 @@ gem 'activeadmin', github: 'activeadmin'
     //= require active_admin/sortable
     ```
 
-3. Add an import in your stylesheet manifest `app/assets/javascripts/active_admin.js`
+3. Add an import in your stylesheet manifest `app/assets/stylesheets/active_admin.scss`
 
     ```sass
     @import "active_admin/sortable";
