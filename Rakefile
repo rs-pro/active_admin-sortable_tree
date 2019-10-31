@@ -5,7 +5,7 @@ rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
-ENV['RAILS_VERSION'] ||= '5.2'
+ENV['RAILS_VERSION'] ||= '6.0'
 
 Bundler::GemHelper.install_tasks
 
