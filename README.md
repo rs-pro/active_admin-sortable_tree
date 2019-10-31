@@ -13,37 +13,17 @@ sortable via drag'n'drop.
 
 ```ruby
 # Gemfile
-gem "activeadmin", '~> 1.1.0'
-gem "active_admin-sortable_tree", github: "rs-pro/active_admin-sortable_tree"
+gem "activeadmin"
+gem "rs-active_admin-sortable_tree"
 ```
 
 ```ruby
-# Gemfile
-gem 'activeadmin', github: 'activeadmin'
-
 # app/assets/javascripts/active_admin.js
 //= require active_admin/sortable
 
 # app/assets/stylesheets/active_admin.scss
 @import "active_admin/sortable";
 ```
-=======
-1. Add SortableTree to your Gemfile; then `bundle install`
-    ```ruby
-    gem "active_admin-sortable_tree", "~> 2.0.0"
-    ```
-
-2. Add a require to your JavaScript manifest `app/assets/javascripts/active_admin.js`
-
-    ```javascript
-    //= require active_admin/sortable
-    ```
-
-3. Add an import in your stylesheet manifest `app/assets/stylesheets/active_admin.scss`
-
-    ```sass
-    @import "active_admin/sortable";
-    ```
 
 ## Usage (Tree)
 
