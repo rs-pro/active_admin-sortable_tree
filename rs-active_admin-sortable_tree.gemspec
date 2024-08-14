@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.files       = `git ls-files app lib vendor`.split($\) + ["Changelog.md", "README.md", "MIT-LICENSE"]
 
-  s.add_dependency 'rails',           [">= 5.0", "< 6.1"]
+  s.add_dependency 'rails',           [">= 6.0", "< 8.0"]
   s.add_dependency 'activeadmin'
   s.add_dependency 'jquery-ui-rails', '>= 6.0.1'
   s.add_dependency 'jquery-rails'
